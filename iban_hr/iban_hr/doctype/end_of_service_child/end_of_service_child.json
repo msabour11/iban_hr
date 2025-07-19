@@ -1,0 +1,45 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-07-17 00:32:42.441303",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "from_year",
+  "to_year",
+  "number_of_month"
+ ],
+ "fields": [
+  {
+   "fieldname": "from_year",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "From Year"
+  },
+  {
+   "fieldname": "to_year",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "To Year"
+  },
+  {
+   "fieldname": "number_of_month",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Number Of Month"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-07-19 12:06:33.044581",
+ "modified_by": "Administrator",
+ "module": "Iban Hr",
+ "name": "End Of Service Child",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

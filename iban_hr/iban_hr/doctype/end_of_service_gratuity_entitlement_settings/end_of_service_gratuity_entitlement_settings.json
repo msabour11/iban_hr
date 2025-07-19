@@ -1,0 +1,80 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-07-17 00:56:19.664347",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "contract_type",
+  "section_break_ovvd",
+  "column_break_hroi",
+  "end_of_service",
+  "section_break_zutj",
+  "deduction_rules"
+ ],
+ "fields": [
+  {
+   "fieldname": "contract_type",
+   "fieldtype": "Table MultiSelect",
+   "label": "Contract Type",
+   "options": "Contract Type Child Table"
+  },
+  {
+   "fieldname": "section_break_ovvd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_hroi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "end_of_service",
+   "fieldtype": "Table",
+   "label": "End Of Service",
+   "options": "End Of Service Child"
+  },
+  {
+   "fieldname": "section_break_zutj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "deduction_rules",
+   "fieldtype": "Table MultiSelect",
+   "label": "Deduction rules",
+   "options": "Deduction rules"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-07-19 12:05:35.967860",
+ "modified_by": "Administrator",
+ "module": "Iban Hr",
+ "name": "End of Service Gratuity Entitlement Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
