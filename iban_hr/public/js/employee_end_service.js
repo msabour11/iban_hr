@@ -43,30 +43,46 @@ frappe.ui.form.on("Employee", {
           callback: function (r) {
             if (r.message) {
               //   frappe.set_route("Form", "End Service Record", r.message);
+              var end_service_salary = r.message.award_amount;
               console.log(r.message);
-                frappe.show_alert({
-                  message: __("Salary Component created Successfully"),
+              // frappe.show_alert({
+              //   message: __("Salary Component created Successfully"),
 
-                  indicator: "green",
-                });
-              //   if (r.message.salary_component) {
-              //     frappe.msgprint(
-              //       __("Salary Component created: {0}", [
-              //         r.message.salary_component,
-              //       ])
-              //     );
-              //   }
-              // Optionally, redirect to the Salary Component form
-              // Uncomment the following line if you want to redirect to the Salary Component form
-              // frappe.set_route("Form", "Salary Component", {
-              //   name: r.message.salary_component,
-              //   frappe.set_route("Form", "Salary Component", {
-              //     name: r.message.salary_component,
-              //   });
+              //   indicator: "green",
+              // });
+              frm.set_value("custom_end_of_service_amount", end_service_salary);
+              frm.refresh_field("custom_end_of_service_amount");
+              frm.save();
             }
           },
         });
       });
+    }
+
+    if (frm.doc.relieving_date && frm.doc.custom_end_of_service_amount) {
+      frm.add_custom_button(
+        __("Create End of Service Additional Salary"),
+        function () {
+          frappe.call({
+            method: "iban_hr.api.create_end_of_service_additional_salary",
+            args: {
+              employee_name: frm.doc.name,
+              relieving_date: frm.doc.relieving_date,
+              eos_total: frm.doc.custom_end_of_service_amount,
+            },
+            callback: function (r) {
+              if (r.message) {
+                frappe.show_alert({
+                  message: __(
+                    "End of Service Salary Component created Successfully"
+                  ),
+                  indicator: "green",
+                });
+              }
+            },
+          });
+        }
+      );
     }
   },
 });

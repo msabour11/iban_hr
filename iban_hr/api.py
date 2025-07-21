@@ -70,7 +70,9 @@ def calculate_employee_end_service_salary(
     years = diff.years
     months = diff.months
     days = diff.days
-    total_years = years + months / 12 + days / 365.25
+    # total_years = years + months / 12 + days / 365.25
+    total_years = years + months / 12 + days / 360
+
     basic_salary = float(basic_salary)
 
     # Fetch settings from the End of Service Gratuity Entitlement Settings
@@ -103,21 +105,6 @@ def calculate_employee_end_service_salary(
             eos_total += slab_applicable_years * eos_rate * basic_salary
             remaining_years -= slab_applicable_years
 
-    if frappe.db.exists("Salary Component", f"End of Service - {employee_name}"):
-        frappe.throw(
-            _("Salary Component 'End of Service - {0}' already exists.").format(
-                employee_name
-            )
-        )
-
-    salary_component = frappe.new_doc("Salary Component")
-    salary_component.salary_component = f"End of Service - {employee_name}"
-    salary_component.amount = eos_total
-    salary_component.salary_component_abbr = "EOS"
-    salary_component.insert()
-    salary_component.save()
-    frappe.db.commit()
-
     return {
         "years": years,
         "months": months,
@@ -128,3 +115,28 @@ def calculate_employee_end_service_salary(
         #     salary_component.name if "salary_component" in locals() else None
         # ),
     }
+
+
+@frappe.whitelist()
+def create_end_of_service_additional_salary(employee_name, eos_total, relieving_date):
+    """
+    Create a additional Salary  for End of Service if it does not already exist.
+    """
+    additional_name = f"End of Service - {employee_name}"
+    eos_total = float(eos_total)
+
+    if frappe.db.exists("Additional Salary", additional_name):
+        frappe.throw(
+            _("Additional Salary '{0}' already exists.").format(additional_name)
+        )
+
+    additional_salary = frappe.new_doc("Additional Salary")
+    additional_salary.payroll_date = relieving_date
+    additional_salary.amount = eos_total
+    additional_salary.salary_component = "End of Service"
+    additional_salary.employee = employee_name
+    additional_salary.insert()
+    additional_salary.save()
+    frappe.db.commit()
+
+    return additional_salary.name
