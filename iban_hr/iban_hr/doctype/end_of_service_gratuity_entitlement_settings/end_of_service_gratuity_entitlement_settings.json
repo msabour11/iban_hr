@@ -12,7 +12,9 @@
   "section_break_lvst",
   "end_of_service_resignation",
   "section_break_hilc",
-  "deduction_rules"
+  "deduction_rules",
+  "column_break_vite",
+  "earning_leave"
  ],
  "fields": [
   {
@@ -54,12 +56,22 @@
    "fieldtype": "Table",
    "label": "End Of Service Resignation",
    "options": "End Of Service Child"
+  },
+  {
+   "fieldname": "column_break_vite",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "earning_leave",
+   "fieldtype": "Table MultiSelect",
+   "label": "Earning Leave",
+   "options": "Deduction rules"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-07-21 17:11:03.007416",
+ "modified": "2025-07-22 00:37:47.425761",
  "modified_by": "Administrator",
  "module": "Iban Hr",
  "name": "End of Service Gratuity Entitlement Settings",
