@@ -67,15 +67,15 @@ def get_columns():
             "fieldtype": "Float",
             "width": 100,
         },
+        # {
+        #     "label": _("Normal EOS Amount"),
+        #     "fieldname": "custom_end_of_service_amount",
+        #     "fieldtype": "Currency",
+        #     "options": "currency",
+        #     "width": 120,
+        # },
         {
-            "label": _("Normal EOS Amount"),
-            "fieldname": "custom_end_of_service_amount",
-            "fieldtype": "Currency",
-            "options": "currency",
-            "width": 120,
-        },
-        {
-            "label": _("Resignation EOS Amount"),
+            "label": _("Net EOS Amount"),
             "fieldname": "custom_net_end_of_service_amount",
             "fieldtype": "Currency",
             "options": "currency",

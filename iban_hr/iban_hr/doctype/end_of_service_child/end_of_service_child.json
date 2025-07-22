@@ -26,13 +26,14 @@
   {
    "fieldname": "eos_award",
    "fieldtype": "Float",
-   "label": "eos award"
+   "label": "eos award",
+   "precision": "7"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-07-19 17:28:29.865733",
+ "modified": "2025-07-22 15:37:10.320189",
  "modified_by": "Administrator",
  "module": "Iban Hr",
  "name": "End Of Service Child",
